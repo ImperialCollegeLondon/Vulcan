@@ -3,8 +3,8 @@
 
 #include <vector>
 
-class Stock_Market_Initialisation;
-#include "Stock_Market_Initialisation.hpp"
+// class Stock_Market_Initialisation;
+
 
 class Stock_Market{
     public:
@@ -14,7 +14,11 @@ class Stock_Market{
     // Functions
     std::pair<std::vector<double>, std::vector<double>> Simulate_GBM();
 
+    private:
     // Variables
+    double initial_price;
+    double mu;
+    double sigma;
     int num_of_days;
 };
 

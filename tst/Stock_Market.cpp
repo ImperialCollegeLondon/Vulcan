@@ -6,14 +6,14 @@
 
 // Constructor to initialise variables
 Stock_Market::Stock_Market(){
-    initial_price = initial_price; // Initial price
-    mu = mu;  // Drift
-    sigma = sigma; // Volatility
-    num_of_days = num_of_days; // Number of days to predict for
+    initial_price = 100; // Initial price
+    mu = 0.2;  // Drift
+    sigma = 0.1; // Volatility
+    num_of_days = 10; // Number of days to predict for
 }
 
 // Function to simulate geometric brownian motion
-std::pair<std::vector<double>, std::vector<double>> Simulate_GBM(){
+std::pair<std::vector<double>, std::vector<double>> Stock_Market::Simulate_GBM(){
 
     // Initialise opening and closing prices arrays
     std::vector<double> opening_prices(num_of_days);
@@ -46,7 +46,8 @@ std::pair<std::vector<double>, std::vector<double>> Simulate_GBM(){
 
         // Calculate and append the vectors with the most recent opening and closing prices
         opening_prices[i] = opening_prices[i - 1] * exp(price_change);
-        closing_prices[i] = opening_prices[i] * (1 + distribution(gen));
+        closing_prices[i] = std::max(opening_prices[i] * (1 + distribution(gen)), 0.0);
+        
     }
 
     return std::make_pair(opening_prices, closing_prices);
