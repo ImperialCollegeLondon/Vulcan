@@ -101,6 +101,7 @@
         "*.tcc": "cpp",
         "functional": "cpp",
         "memory_resource": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "ranges": "cpp"
     }
 }
