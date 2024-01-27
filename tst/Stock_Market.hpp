@@ -19,6 +19,11 @@ class Stock_Market{
     double initial_price;
     double mu;
     double sigma;
+    double sentiment;
+    double alpha;
+    double beta_1;
+    double beta_2;
+    double epsilon;
     int num_of_days;
 };
 

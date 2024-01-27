@@ -6,16 +6,22 @@ using namespace std;
 
 int main() {
     Stock_Market stock_instance;
-    auto stock_prices = stock_instance.Simulate_GBM();
+    auto stock_data = stock_instance.Simulate_GBM();
+    auto stock_prices = stock_data.first;
+    auto sentiments = stock_data.second;
 
-    ofstream MyFile("days.csv");
-    for (int i = 0; i < stock_prices.first.size(); ++i) {
-        std::cout << "Day " << i << ": Opening Price = " << stock_prices.first[i] << ", Closing Price = " << stock_prices.second[i] << std::endl;
-   
-        MyFile << i << " " <<  stock_prices.first[i] << std::endl;
-        
+    ofstream priceFile("prices.csv");
+    ofstream sentimentFile("sentiments.csv");
+
+    for (int i = 0; i < stock_prices.size(); ++i) {
+        std::cout << "Day " << i << ": Price = " << stock_prices[i] << ", Sentiment = " << sentiments[i] << std::endl;
+
+        priceFile << i << " " <<  stock_prices[i] << std::endl;
+        sentimentFile << i << "," << sentiments[i] << std::endl;
     }
-    MyFile.close();
+
+    priceFile.close();
+    sentimentFile.close();
 
     return 0;
 }
