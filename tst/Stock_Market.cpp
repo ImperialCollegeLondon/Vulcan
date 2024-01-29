@@ -23,7 +23,7 @@ Stock_Market::Stock_Market(){
 
     // Household
     household_number = 10;       // n_households in main code
-
+    percent_invest = 0.15;
 
     // Initialise number of days to simulate for
     num_of_days = 10;      // Number of days to predict for
@@ -31,7 +31,8 @@ Stock_Market::Stock_Market(){
     
 }
 
-// Function to simulate geometric brownian motion
+/*Function to simulate geometric brownian motion
+*/ 
 std::pair<std::vector<double>, std::vector<double>> Stock_Market::Simulate_GBM(){
 
     // Initialise prices array
@@ -70,19 +71,14 @@ std::pair<std::vector<double>, std::vector<double>> Stock_Market::Simulate_GBM()
         double daily_return_percentage = (price_change / prices[i - 1]);
         daily_price_return[i] = daily_return_percentage;
 
-        // // Determine whether to increase or decrease investor sentiment
-        // if (price_data.prices[i - 1] < price_data.prices[i]) {
-        //     sentiment_values[i] = sentiment_values[i - 1] * (0.05 * (price_data.prices[i] - price_data.prices[i-1])) + distribution(gen);
-        // } else {
-        //     sentiment_values[i] = sentiment_values[i - 1] * (-0.05 * (price_data.prices[i] - price_data.prices[i-1])) + distribution(gen);
-        // }
-        
     }
 
     return std::make_pair(prices, daily_price_return);
 
 }
 
+/*Function to calculate the ROI of a households income after investing on the stock
+*/
 std::pair<std::vector<double>, std::vector<double>> Stock_Market::Household_Spending(const std::vector<double> daily_price_return){
 
     // Create array to store household incomes
@@ -112,13 +108,15 @@ std::pair<std::vector<double>, std::vector<double>> Stock_Market::Household_Spen
         total_value_of_investment[i] = (0.15 * household_incomes[i]) * (1 + tot_return);
 
         // Calculate return on investment
-        return_on_investment[i] = total_value_of_investment[i] - (0.15 * household_incomes[i]);
+        return_on_investment[i] = total_value_of_investment[i] - (percent_invest * household_incomes[i]); // Add this to consumption_budget in Household_Agent.cpp
 
     }
 
     return std::make_pair(household_incomes, return_on_investment);
 }
 
+/*Function that calculates investor sentiment based on whether stock price goes up or down
+*/ 
 std::vector<double> Stock_Market::Investor_Sentiment(const std::vector<double> daily_price_return){
 
     // Initialise investor sentiment array

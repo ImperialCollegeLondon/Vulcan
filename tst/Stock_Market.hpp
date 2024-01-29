@@ -29,6 +29,7 @@ class Stock_Market{
     double stock_return;
     double investment;
     double household_number;
+    double percent_invest;
     double tot_reservation_wage;
     int num_of_days;
 };
