@@ -15,6 +15,9 @@ class Stock_Market{
     std::pair<std::vector<double>, std::vector<double>> Simulate_GBM();
     std::pair<std::vector<double>, std::vector<double>> Household_Spending(const std::vector<double> daily_price_return);
     std::vector<double> Investor_Sentiment(const std::vector<double> daily_price_return);
+    void Train_AR_model(const std::vector<double> prices, const std::vector<double> sentiment_values, int epochs);
+    std::vector<double> Predict_Sentiment(const std::vector<double> prices, double weight);
+
 
     private:
     // Variables
@@ -31,6 +34,9 @@ class Stock_Market{
     double household_number;
     double percent_invest;
     double tot_reservation_wage;
+    double weight;
+    double learning_rate;
+    double loss;
     int num_of_days;
 };
 
