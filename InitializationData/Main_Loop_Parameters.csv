@@ -1,7 +1,8 @@
-n_loops,180.0
-n_households,10000.0
-n_consumer_firms,100.0
-n_capital_firms,50.0
+n_loops,500.0
+n_households,50000.0
+n_consumer_firms,1500.0
+n_capital_firms,250.0
+n_firms,1500.0
 n_consumer_sectors,12.0
 household_n_res_wage_decrease,0.05
 household_targeted_savings_to_income_ratio,2.0
@@ -22,10 +23,10 @@ firm_cap_machine_lifespan,100.0
 firm_cap_inv_reaction_factor,1.0
 firm_cap_fixed_wage_change,0.05
 firm_cap_fixed_price_change,0.05
-bank_inflation_reaction,1.5
-bank_inflation_target,1.05
-bank_inflation_target_monthly,1.004
-bank_risk_premium,0.1
+bank_inflation_reaction,1.0
+bank_inflation_target,1.1
+bank_inflation_target_monthly,1.008
+bank_risk_premium,0.05
 bank_short_term_loan_length,6.0
 bank_long_term_loan_length,24.0
 bank_leverage_ratio_lower_threshold,10.0

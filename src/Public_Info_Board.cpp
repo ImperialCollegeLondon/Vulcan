@@ -298,7 +298,7 @@ void Public_Info_Board::Update_Consumer_Price_Level()
     cons_price_level_previous = cons_price_level_current; // Set current price lvel to previous
     
     // Get Data from consumer goods market
-    consumer_sectors_price_levels = pConsumer_Goods_Market->Get_Price_Levels_By_Sector();
+    consumer_sectors_price_levels = pConsumer_Goods_Market->Get_Price_Levels_By_Sector(); // not necessary (?)
     cons_price_level_current = pConsumer_Goods_Market->Get_Price_Level();
 
     // Update inflation 

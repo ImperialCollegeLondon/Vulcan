@@ -19,10 +19,6 @@ class Bank_Agent{
     // Constructor
     Bank_Agent(Public_Info_Board* pPublic_Info_Board); 
 
-    // Inflation and Interest Rate Policies
-    void Update_Inflation();
-    void Update_Interest_Rate();
-
     // Loan issuance
     Loan* Issue_Short_Term_Loan(Firm_Agent* pFirm);
     Loan* Issue_Long_Term_Loan(Firm_Agent* pFirm);
@@ -32,9 +28,6 @@ class Bank_Agent{
 
     // Loan repayments
     void Check_Loans();
-
-    // Getters
-    float Get_Interest_Rate() {return r_rate;}
 
     // Printing and debugging
     friend std::ostream& operator<<(std::ostream& os, const Bank_Agent& obj);

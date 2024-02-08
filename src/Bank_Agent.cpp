@@ -10,34 +10,6 @@ Initialize everything else to zero
 Bank_Agent::Bank_Agent(Public_Info_Board* pPublic_Info_Board){
 
     this->pPublic_Board = pPublic_Info_Board;
-
-    // Interest rate 
-    r_rate = bank_init_interest_rate; // preset Global param
-    risk_premium = bank_risk_premium; // preset Global param
-    r_reaction = bank_inflation_reaction; // preset Global param
-
-    // Inflation
-    cons_inflation_target = bank_inflation_target; // preset Global param
-    cons_inflation_past_month = bank_inflation_target_monthly; // preset Global param
-    cons_inflation_previous = 1.0;
-
-    // Initialize cons_inflation_history
-    for(int i = 0; i < 12; i++){
-        cons_inflation_previous *= bank_inflation_target_monthly; // preset Global param
-        cons_inflation_history.push(bank_inflation_target_monthly);
-    }
-
-    cons_inflation_current = cons_inflation_previous;
-
-    // Manufacturer inflation - start  off same as consumer inflation
-    float cap_inflation_target = bank_inflation_target; // not actually used
-    cap_inflation_past_month = bank_inflation_target_monthly; // preset Global param
-    cap_inflation_previous = 1.0;
-
-    for(int i = 0; i < 12;i++){
-        cap_inflation_previous *= bank_inflation_target_monthly; // preset Global param
-        cap_inflation_history.push(bank_inflation_target_monthly);
-    }
     
     // Repayments
     new_principal_repayments = 0;
@@ -66,65 +38,6 @@ Bank_Agent::Bank_Agent(Public_Info_Board* pPublic_Info_Board){
 
     current_date = 0;
 }
-
-
-// --------- Inflation and Interest Rate Policies
-
-/* Function to update consumer and capital price levels and inflation rate data
-    First make public board update its price and inflation records
-    Then get the latest inflation figures from the public board
-*/
-void Bank_Agent::Update_Inflation(){
-    // Set current to previous
-    cons_inflation_previous = cons_inflation_current;
-    cap_inflation_previous = cap_inflation_current;
-    // Make public board update stuff
-    pPublic_Board->Update_Consumer_Price_Level();
-    pPublic_Board->Update_Capital_Price_Level();
-    // Get the updated data
-    cons_inflation_past_month = pPublic_Board->Get_Consumer_Inflation();
-    cap_inflation_past_month = pPublic_Board->Get_Capital_Inflation();
-    // Update inflation to match trailing 12m
-    cons_inflation_current = cons_inflation_previous / cons_inflation_history.front() * cons_inflation_past_month;
-    cap_inflation_current = cap_inflation_previous / cap_inflation_history.front() * cap_inflation_past_month;
-
-    if(cons_inflation_current < 0){
-        cout << "ERROR: Bank_Agent::Update_Inflation() - cons_inflation_current < 0" << endl;
-    }
-
-    // Update inflation_histories
-    cons_inflation_history.pop();
-    cons_inflation_history.push(cons_inflation_past_month);
-
-    cap_inflation_history.pop();
-    cap_inflation_history.push(cap_inflation_past_month);
-}
-
-
-/* Function to update interest rate based on new inflation data
- To be called after calling Update_Inflation_Rate()
- Use a simple taylor rule from the Jamel Paper
-*/
-void Bank_Agent::Update_Interest_Rate(){
-
-    float inflation_overshoot = max(cons_inflation_current - cons_inflation_target, float(0.0));
-
-    float r_current = r_rate;
-
-    // Set interest rate proportional to inflation overshoot
-    r_rate = max( float(r_reaction* inflation_overshoot), float(0.01)); // minimum interest rate of 1%
-
-    // Impose maximum increase limit
-    if (r_rate > r_current + bank_max_interest_rate_change){
-        r_rate = r_current + bank_max_interest_rate_change;
-    }
-    // Check for max interest rate limit
-    r_rate = min(r_rate, bank_max_interest_rate) ; // maximum interest rate of 40%
-
-    // Update historical records
-    interest_rate_history.push(r_rate);
-}
-
 
 // Loan issuance
 
@@ -224,7 +137,7 @@ Loan* Bank_Agent::Issue_Long_Term_Loan(Firm_Agent* pFirm){
 }
 
 
-/* Function to calculate how much premium to charge in loand for a firm's emission
+/* Function to calculate how much premium to charge in loans for a firm's emission
 Either look at the firm's total emissions, or the firm's emissions per unit of output based on user selection
 Linearly interpolate between the firms emissions and the bank's lower and upper thresholds
 and impose the necessary penalty
@@ -252,7 +165,7 @@ float Bank_Agent::Calculate_Emission_Penalty(Firm_Agent *pFirm){
     }
 }
 
-/*
+/* 
 */
 float Bank_Agent::Calculate_Leverage_Penalty(float leverage_ratio){
     if(leverage_ratio <= leverage_ratio_lower_threshold){
@@ -320,22 +233,10 @@ void Bank_Agent::Check_Loans(){
     total_principal_repayments += new_principal_repayments;
 }
 
-
-
 // ------- Printing and Logging Methods
 
 /* String stream operator overload*/
 std::ostream& operator<<(std::ostream& os, const Bank_Agent& obj) {
-    os << "r_rate " << obj.r_rate << std::endl;
-    //os << "r_reaction " << obj.r_reaction << std::endl;
-    //os << "risk_premium " << obj.risk_premium << std::endl;
-    //os << "cons_inflation_target " << obj.cons_inflation_target << std::endl;
-    os << "cons_inflation_current " << obj.cons_inflation_current << std::endl;
-    //os << "cons_inflation_previous " << obj.cons_inflation_previous << std::endl;
-    //os << "cons_inflation_past_month " << obj.cons_inflation_past_month << std::endl;
-    //os << "cap_inflation_current " << obj.cap_inflation_current << std::endl;
-    //os << "cap_inflation_previous " << obj.cap_inflation_previous << std::endl;
-    //os << "cap_inflation_past_month " << obj.cap_inflation_past_month << std::endl;
     os << "new_principal_repayments " << obj.new_principal_repayments << std::endl;
     os << "new_interest_repayments " << obj.new_interest_repayments << std::endl;
     os << "total_principal_repayments " << obj.total_principal_repayments << std::endl;
