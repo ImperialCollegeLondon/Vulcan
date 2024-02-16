@@ -151,7 +151,7 @@ void Capital_Firm_Agent::Determine_New_Production(){
     good_price_current = max(good_price_current, unit_good_cost*1.1f);
 
     /* Alternative quantity adjustment formula  from jamel paper - overrides above quantity adjustments */
-    production_planned = static_cast<long long>(average_sale_quantity - (inventory - desired_inventory)/inv_reaction_factor);
+    production_planned = static_cast<long long>(average_sale_quantity);
     production_planned = max(production_planned, static_cast<long long>(1)); // Floor at 1
     
     pPublic_Info_Board->Update_Capital_Goods_Planned_Production(production_planned);

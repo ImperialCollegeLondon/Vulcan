@@ -138,7 +138,7 @@ void Firm_Agent::Initialize_Production(){
     for(int i = 0; i < 12; i++){ past_profits.push(revenue_sales); }
     average_profit = revenue_sales;
     for(int i = 0 ; i < 12; i++){ past_sale_quantities.push(quantity_sold); }
-    average_sale_quantity = quantity_sold;
+    average_sale_quantity = quantity_sold * 1.2;
 }
 
 
@@ -228,7 +228,7 @@ void Firm_Agent::Check_Sales(){
     if(production_current !=0){
         inv_factor = static_cast<float>(inventory) /  static_cast<float>(production_current);
     } else if ( average_sale_quantity != 0){
-        inv_factor = static_cast<float>(inventory) /  static_cast<float>(average_sale_quantity); // Unsure about this
+        inv_factor = static_cast<float>(inventory) /  static_cast<float>(average_sale_quantity);  //Unsure about this
     } else {
         inv_factor = target_inv_factor/10.0;
     }

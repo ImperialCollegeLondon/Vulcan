@@ -1,4 +1,4 @@
-bank_init_interest_rate,0.02
+bank_init_interest_rate,20.0
 household_init_c_f_mean,0.5
 household_init_c_f_std,0.1
 household_init_c_f_min,0.1
@@ -28,7 +28,7 @@ household_init_res_wage_std,300.0
 household_init_res_wage_min,100.0
 household_init_res_wage_max,999999.0
 household_init_unemployment_benefit,500.0
-household_init_minimum_wage,600.0
+household_init_minimum_wage,0.0
 firm_cons_init_cash_mean,10000.0
 firm_cons_init_cash_std,2500.0
 firm_cons_init_cash_min,1.0
