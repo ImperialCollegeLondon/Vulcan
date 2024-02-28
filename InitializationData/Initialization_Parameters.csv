@@ -56,7 +56,7 @@ firm_cons_init_target_inv_factor_std,0.0
 firm_cons_init_target_inv_factor_min,0.1
 firm_cons_init_target_inv_factor_max,10.0
 firm_cons_init_production_current_ratio,0.4
-firm_cons_init_quantity_sold_ratio,0.25
+firm_cons_init_quantity_sold_ratio,0.01
 firm_cons_init_emissions_per_unit,10.0
 firm_cap_init_cash_mean,1000.0
 firm_cap_init_cash_std,250.0
