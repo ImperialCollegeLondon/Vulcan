@@ -28,7 +28,7 @@ void Consumer_Goods_Market::Add_Consumer_Good_To_Market(Consumer_Good * cons_goo
 */
 void Consumer_Goods_Market::Divide_Goods_Into_Sectors(vector<Consumer_Firm_Sector*> *pConsumer_Firm_Sector_vector){
     
-    cout << "Divind consumer goods into " << sector_count << " sectors" << endl;
+    cout << "Divide consumer goods into " << sector_count << " sectors" << endl;
     // Create the pairs to store the goods ** Note that i starts from 1
     for (int i = 0; i < sector_count; i++){
         cons_good_list_by_sector.push_back(std::make_pair(i, vector<Consumer_Good*>()));

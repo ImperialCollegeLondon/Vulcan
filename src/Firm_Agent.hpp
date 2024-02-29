@@ -65,6 +65,7 @@ class Firm_Agent{
     bool Get_Cons_Firm_Status() {return is_cons_firm;}
     virtual float Get_Unit_Emissions() {return 0;} 
     virtual long long Get_Total_Emissions() {return 0;}
+    long long Get_Inventory() {return inventory;}
 
     // Setters
     void Set_Public_Info_Board(Public_Info_Board* ptr) {pPublic_Info_Board = ptr;}

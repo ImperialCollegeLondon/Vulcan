@@ -402,7 +402,7 @@ void Household_Agent::Seek_Jobs()
                 pPublic_Info_Board->Take_Job(current_job);
             }
             else {
-                //cout << "job not found" <<endl;
+                cout << "job not found" <<endl;
                 Update_Reservation_Wage();
             }
         }

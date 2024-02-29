@@ -7,7 +7,7 @@ Consumer_Goods_Market* pConsumer_Goods_Market, Capital_Goods_Market* pCapital_Go
 vector<Consumer_Firm_Sector*> *pConsumer_Firm_Sector_vector){
         
     // STEP 0.10: Initalize Public Board, Job Market, Bank, Markets
-    cout << " Step 0.10: Initalize Public Board, Job Market, Bank, Markets" << endl;
+    cout << " Step I.0.10: Initalize Public Board, Job Market, Bank, Markets" << endl;
     pPublic_Board->Set_Job_Market(pJob_Market);
     pPublic_Board->Set_Bank(pBank);
     pPublic_Board->Set_Consumer_Goods_Market(pConsumer_Goods_Market);
@@ -15,37 +15,36 @@ vector<Consumer_Firm_Sector*> *pConsumer_Firm_Sector_vector){
 
 
     //--------- STEP 0.11: Initialize Households and Firms
-    cout << "STEP 0.11: Initialize Households and Firms" << endl;
+    cout << "STEP I.0.11: Initialize Households and Firms" << endl;
     Initialize_Households(pHousehold_vector, pPublic_Board, n_households); 
     Initialize_Consumer_Firms( pConsumer_Firm_vector, pPublic_Board,  n_consumer_firms);
     Initialize_Capital_Firms(pCapital_Firm_vector, pPublic_Board,n_capital_firms);
 
 
     //----------- STEP 0.12 Initialize Firm Owners
-    cout << "STEP 0.12: Initialize Firm Owners" << endl;
+    cout << "STEP I.0.12: Initialize Firm Owners" << endl;
     Initialize_Firm_Owners(pHousehold_vector,pConsumer_Firm_vector, pCapital_Firm_vector);
 
 
     //----------- STEP 0.13: Initialize job market
-    cout << "STEP 0.13: Initialize job market" << endl;
+    cout << "STEP I.0.13: Initialize job market" << endl;
     Initialize_Job_Market(pHousehold_vector,pConsumer_Firm_vector,pCapital_Firm_vector,pPublic_Board);
     cout << "Job market size: " << pJob_Market->Get_Size() << endl; 
 
-
     //----------- STEP 0.14: Initialize consumer firm sectors
-    cout << "STEP 0.14: Initialize consumer firm sectors" << endl;
+    cout << "STEP I.0.14: Initialize consumer firm sectors" << endl;
     Initialize_Consumer_Firm_Sectors(pConsumer_Firm_vector, pConsumer_Firm_Sector_vector,
         pPublic_Board, pConsumer_Goods_Market, pHousehold_vector);
 
 
     //----------- STEP 0.15: Initialize emission allowances - This must be done after employees and sectors are set
-    cout << "STEP 0.15: Initialize emission allowances" << endl;
+    cout << "STEP I.0.15: Initialize emission allowances" << endl;
     for (auto it = pConsumer_Firm_vector->begin(); it != pConsumer_Firm_vector->end(); ++it){
         (*it)->Initialize_Emission_Allowances(); }
 
 
     //---------- STEP 0.16: Initialize Production - Must be done after job market matching
-    cout << "STEP 0.16: Initialize Production based on Job Market matching" << endl;
+    cout << "STEP I.0.16: Initialize Production based on Job Market matching" << endl;
     for (auto it = pConsumer_Firm_vector->begin(); it != pConsumer_Firm_vector->end(); ++it){
         (*it)->Initialize_Production(); }
     for (auto it = pCapital_Firm_vector->begin(); it != pCapital_Firm_vector->end(); ++it){
@@ -53,10 +52,19 @@ vector<Consumer_Firm_Sector*> *pConsumer_Firm_Sector_vector){
 
 
     //----------- STEP 0.17: Send initial goods to markets and initialize price level
-    cout << "Step 0.17: Send initial goods to markets and initialize price level" << endl;
+    cout << "Step I.0.17: Send initial goods to markets and initialize price level" << endl;
     Initialize_Markets(pConsumer_Firm_vector,  pCapital_Firm_vector, pConsumer_Goods_Market,
     pCapital_Goods_Market,pPublic_Board, pConsumer_Firm_Sector_vector);
-}
+
+    for (int i = 0; i < pConsumer_Firm_vector->size(); ++i) {
+    long long consumer_firm_employee_count = (*pConsumer_Firm_vector)[i]->Get_Employee_Count();
+    cout << "Consumer firm " << i << ": Employee count = " << consumer_firm_employee_count << endl;
+    }
+
+    cout << "Job market size: " << pJob_Market->Get_Size() << endl; 
+    cout << "Number of unemployed workers after job assignment" << pPublic_Board->Get_Unemployed_Workers() << endl;
+
+}   
 
 
 
@@ -241,7 +249,6 @@ void Initialize_Job_Market(vector<Household_Agent*> *pHousehold_vector,
     for (Household_Agent* household_ptr : *pHousehold_vector) {
         household_ptr->Seek_Jobs();
         household_ptr->Update_Public_Board_On_Employment();
-        
         }
 
     cout << "Household job initialization - end" << endl;

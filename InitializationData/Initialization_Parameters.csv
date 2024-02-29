@@ -23,12 +23,12 @@ household_init_unemp_tolerance_mean,4.0
 household_init_unemp_tolerance_std,2.0
 household_init_unemp_tolerance_min,0.0
 household_init_unemp_tolerance_max,100.0
-household_init_res_wage_mean,950.0
-household_init_res_wage_std,300.0
-household_init_res_wage_min,100.0
+household_init_res_wage_mean,0.0
+household_init_res_wage_std,0.0
+household_init_res_wage_min,0.0
 household_init_res_wage_max,999999.0
 household_init_unemployment_benefit,500.0
-household_init_minimum_wage,600.0
+household_init_minimum_wage,1.0
 firm_cons_init_cash_mean,1000.0
 firm_cons_init_cash_std,250.0
 firm_cons_init_cash_min,1.0
@@ -39,8 +39,8 @@ firm_cons_init_wage_offer_mean,1000.0
 firm_cons_init_wage_offer_std,300.0
 firm_cons_init_wage_offer_min,100.0
 firm_cons_init_wage_offer_max,999999.0
-firm_cons_init_worker_demand_mean,20.0
-firm_cons_init_worker_demand_std,100.0
+firm_cons_init_worker_demand_mean,10.0
+firm_cons_init_worker_demand_std,0.0
 firm_cons_init_worker_demand_min,1.0
 firm_cons_init_worker_demand_max,100.0
 firm_cons_init_good_price_mean,10.0

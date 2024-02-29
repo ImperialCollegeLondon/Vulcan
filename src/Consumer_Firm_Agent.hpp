@@ -41,6 +41,7 @@ class Consumer_Firm_Agent: public Firm_Agent{
     virtual float Get_Unit_Emissions() override {return unit_emissions;}
     float Get_Adj_Unit_Emissions() {return unit_emissions_adj;}
     virtual long long Get_Total_Emissions() override {return total_emissions;}
+    
 
     protected:
     Consumer_Good* cons_goods_on_market; // Object: 

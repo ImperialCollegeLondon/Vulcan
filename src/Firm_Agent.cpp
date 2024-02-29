@@ -125,7 +125,7 @@ void Firm_Agent::Initialize_Production(){
 
     // Initialize sales and revenue ( Note: Sales will be subtracted from inventory later at t=1 )
     float init_sales = is_cons_firm ? firm_cons_init_quantity_sold_ratio : firm_cap_init_quantity_sold_ratio;
-    quantity_sold = production_current *  init_sales; 
+    quantity_sold = production_current *  init_sales;
     revenue_sales = production_current * good_price_current;
     production_costs = production_current * unit_good_cost;
 
@@ -213,7 +213,7 @@ void Firm_Agent::Cancel_Expired_Contracts(){
     TODO: Check if this is correct, not sure what the inventory value is at this point
     it should be the inventory at the end of the last period*/
 void Firm_Agent::Check_Sales(){
-    quantity_sold = inventory -  goods_on_market->Get_Quantity(); // Originally the amount on market was equal to the inventory
+    quantity_sold = inventory - goods_on_market->Get_Quantity(); // Originally the amount on market was equal to the inventory
     if(quantity_sold < 0){
         cout << "ERROR: Firm_Agent::Check_Sales() - negative quantity_sold: "<< quantity_sold << " at firm # " << this << endl;
         quantity_sold = 0;
