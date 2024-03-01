@@ -242,10 +242,10 @@ Consumer_Goods_Market* pConsumer_Goods_Market, Capital_Goods_Market* pCapital_Go
     pPublic_Info_Board->Calculate_Average_Unit_Emissions_by_Sector();
 
 
-    for (int i = 0; i < pConsumer_Firm_vector->size(); ++i) {
+    /*for (int i = 0; i < pConsumer_Firm_vector->size(); ++i) {
         long long consumer_firm_inventory = (*pConsumer_Firm_vector)[i]->Get_Inventory();
         cout << "Consumer firm " << i << ": Inventory = " << consumer_firm_inventory << endl;
-    }
+    }*/
 
 
 

@@ -118,9 +118,10 @@ void Firm_Agent::Initialize_Production(){
     capital_goods_current_value = firm_cap_init_good_price_mean * working_capital_inventory;
 
     // Initialize production and good inventory
-    production_current = max(working_capital_inventory* output_per_machine,10LL); // give at least 10 goods to start
+    production_current = max(working_capital_inventory * output_per_machine,10LL); // give at least 10 goods to start
     production_planned = production_current;
-    inventory = production_current * inv_factor;
+    inventory = production_current* inv_factor;
+    cout << "inventory is :" << inventory << endl;
     desired_inventory = target_inv_factor * production_current;
 
     // Initialize sales and revenue ( Note: Sales will be subtracted from inventory later at t=1 )

@@ -71,7 +71,6 @@ void Consumer_Firm_Agent::Initialize_Emission_Allowances(){
 }
 
 
-
 // ------- Main Loop Methods-----------------
 
 
@@ -227,6 +226,9 @@ void Consumer_Firm_Agent::Determine_New_Production(){
 
     /* Alternative quantity adjustment formula  from jamel paper - overrides above quantity adjustments */
     production_planned = static_cast<long long>((average_sale_quantity) - (inventory - desired_inventory)/inv_reaction_factor);
+    cout << "planned production calculated :" << production_planned << endl;
+    cout << "average_sale_quantity:" << average_sale_quantity << endl;
+    cout << "inventory :" << inventory << endl;
     production_planned = max(production_planned, static_cast<long long>(1)); // Floor at 1
     // At least operate all machines ?
     

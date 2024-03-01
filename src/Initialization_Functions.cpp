@@ -56,13 +56,13 @@ vector<Consumer_Firm_Sector*> *pConsumer_Firm_Sector_vector){
     Initialize_Markets(pConsumer_Firm_vector,  pCapital_Firm_vector, pConsumer_Goods_Market,
     pCapital_Goods_Market,pPublic_Board, pConsumer_Firm_Sector_vector);
 
-    for (int i = 0; i < pConsumer_Firm_vector->size(); ++i) {
+    /*for (int i = 0; i < pConsumer_Firm_vector->size(); ++i) {
     long long consumer_firm_employee_count = (*pConsumer_Firm_vector)[i]->Get_Employee_Count();
     cout << "Consumer firm " << i << ": Employee count = " << consumer_firm_employee_count << endl;
-    }
-
+    }*/
+/*
     cout << "Job market size: " << pJob_Market->Get_Size() << endl; 
-    cout << "Number of unemployed workers after job assignment" << pPublic_Board->Get_Unemployed_Workers() << endl;
+    cout << "Number of unemployed workers after job assignment" << pPublic_Board->Get_Unemployed_Workers() << endl;*/
 
 }   
 
@@ -414,7 +414,7 @@ void Allocate_Firms_to_Sectors(vector<Consumer_Firm_Agent*> *pConsumer_Firm_vect
         }
 
         // Randomly allocate firms to the sector
-        for (int i = 0; i < 1; ++i) {
+        for (int i = 0; i < firms_to_allocate; ++i) {
 
             // Due to the rounding of int firms_to_allocate, we will try to allocate more firms than we have
             if (start_index >= pConsumer_Firm_vector->size()) {

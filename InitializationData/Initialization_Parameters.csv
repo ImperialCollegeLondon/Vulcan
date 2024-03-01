@@ -39,7 +39,7 @@ firm_cons_init_wage_offer_mean,1000.0
 firm_cons_init_wage_offer_std,300.0
 firm_cons_init_wage_offer_min,100.0
 firm_cons_init_wage_offer_max,999999.0
-firm_cons_init_worker_demand_mean,10.0
+firm_cons_init_worker_demand_mean,311.0
 firm_cons_init_worker_demand_std,0.0
 firm_cons_init_worker_demand_min,1.0
 firm_cons_init_worker_demand_max,100.0
@@ -47,7 +47,7 @@ firm_cons_init_good_price_mean,10.0
 firm_cons_init_good_price_std,2.0
 firm_cons_init_good_price_min,1.0
 firm_cons_init_good_price_max,99.0
-firm_cons_init_inv_factor_mean,2.0
+firm_cons_init_inv_factor_mean,1.0
 firm_cons_init_inv_factor_std,0.0
 firm_cons_init_inv_factor_min,0.5
 firm_cons_init_inv_factor_max,2.0
@@ -56,7 +56,7 @@ firm_cons_init_target_inv_factor_std,0.0
 firm_cons_init_target_inv_factor_min,0.1
 firm_cons_init_target_inv_factor_max,10.0
 firm_cons_init_production_current_ratio,0.4
-firm_cons_init_quantity_sold_ratio,0.01
+firm_cons_init_quantity_sold_ratio,1.0
 firm_cons_init_emissions_per_unit,10.0
 firm_cap_init_cash_mean,1000.0
 firm_cap_init_cash_std,250.0
