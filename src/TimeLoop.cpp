@@ -75,8 +75,6 @@ Consumer_Goods_Market* pConsumer_Goods_Market, Capital_Goods_Market* pCapital_Go
         cout << "Consumer Sector " << i << ": Planned production = " << quantity << endl;
     }
 
-
-
     // STEP 1.8: Firms set wage offers, labor target, and finance expected wage bill
     cout << " \n ------------ Step 1.8: Firms set wage offers, labor target, and finance expected wage bill ----------------" <<endl;
 

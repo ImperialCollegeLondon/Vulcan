@@ -123,6 +123,10 @@ void Firm_Agent::Initialize_Production(){
     inventory = production_current * inv_factor;
     desired_inventory = target_inv_factor * production_current;
 
+    cout << "inventory is :" << inventory << "in sector " << this->Get_Sector_ID() << endl;
+    desired_inventory = production_current;
+    cout << "desired_inventory is :" << desired_inventory<< "in sector " << this->Get_Sector_ID() << endl;
+
     // Initialize sales and revenue ( Note: Sales will be subtracted from inventory later at t=1 )
     float init_sales = is_cons_firm ? firm_cons_init_quantity_sold_ratio : firm_cap_init_quantity_sold_ratio;
     quantity_sold = production_current *  init_sales; 
