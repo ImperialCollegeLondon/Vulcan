@@ -215,6 +215,7 @@ void Firm_Agent::Cancel_Expired_Contracts(){
     TODO: Check if this is correct, not sure what the inventory value is at this point
     it should be the inventory at the end of the last period*/
 void Firm_Agent::Check_Sales(){
+    cout << "inventory initially :" << inventory << endl;
     quantity_sold = inventory - goods_on_market->Get_Quantity(); // Originally the amount on market was equal to the inventory
     if(quantity_sold < 0){
         cout << "ERROR: Firm_Agent::Check_Sales() - negative quantity_sold: "<< quantity_sold << " at firm # " << this << endl;
@@ -235,7 +236,13 @@ void Firm_Agent::Check_Sales(){
         inv_factor = target_inv_factor/10.0;
     }
 
-    desired_inventory = max( static_cast<long long>(target_inv_factor * production_current),static_cast<long long>(target_inv_factor * average_sale_quantity) );
+    desired_inventory = max( static_cast<long long>(1 * production_current),static_cast<long long>(1 * average_sale_quantity) );
+    cout << "production_current : " << production_current<< endl;
+    cout << "planned production calculated :" << production_planned << endl;
+    cout << "average_sale_quantity:" << average_sale_quantity << endl;
+    cout << "inventory :" << inventory << endl;
+    cout << "desired_inventory :" << desired_inventory << endl;
+    cout << "quantity sold :" << quantity_sold << endl;
     //desired_inventory = static_cast<long long>(target_inv_factor * production_current);
 }
 

@@ -167,10 +167,6 @@ void Consumer_Firm_Agent::Determine_New_Production(){
     bool price_high = good_price_current >= average_market_price;
     bool inventory_high = inventory >= desired_inventory; 
 
-    cout << "planned production calculated 1:" << production_planned << endl;
-    cout << "average_sale_quantity1:" << average_sale_quantity << endl;
-    cout << "inventory 1:" << inventory << endl;
-    cout << "desired_inventory 1:" << desired_inventory << endl;
     // Check if emissiosn are high relative to the market
     float emission_overshoot = unit_emissions_adj - pPublic_Info_Board->Get_Average_Unit_Emissions_by_Sector(sector_id);
     bool emission_high = emission_overshoot > 0; 
@@ -229,11 +225,7 @@ void Consumer_Firm_Agent::Determine_New_Production(){
     good_price_current = max(good_price_current, unit_good_cost*1.1f);
 
     /* Alternative quantity adjustment formula  from jamel paper - overrides above quantity adjustments */
-    production_planned = static_cast<long long>((average_sale_quantity) - (inventory - desired_inventory)/inv_reaction_factor);
-    cout << "planned production calculated :" << production_planned << endl;
-    cout << "average_sale_quantity:" << average_sale_quantity << endl;
-    cout << "inventory :" << inventory << endl;
-    cout << "desired_inventory :" << desired_inventory << endl;
+    production_planned = static_cast<long long>(average_sale_quantity - (inventory - desired_inventory)/inv_reaction_factor);
     production_planned = max(production_planned, static_cast<long long>(1)); // Floor at 1
     // At least operate all machines ?
     
