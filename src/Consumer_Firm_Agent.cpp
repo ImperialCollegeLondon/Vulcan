@@ -168,6 +168,11 @@ void Consumer_Firm_Agent::Determine_New_Production(){
     bool price_high = good_price_current >= average_market_price;
     bool inventory_high = inventory >= desired_inventory; 
 
+    cout << "planned production calculated 1:" << production_planned << endl;
+    cout << "average_sale_quantity1:" << average_sale_quantity << endl;
+    cout << "inventory 1:" << inventory << endl;
+    cout << "desired_inventory 1:" << desired_inventory << endl;
+    
     // Check if emissiosn are high relative to the market
     float emission_overshoot = unit_emissions_adj - pPublic_Info_Board->Get_Average_Unit_Emissions_by_Sector(sector_id);
     bool emission_high = emission_overshoot > 0; 
