@@ -1,8 +1,8 @@
 n_loops,100.0
-n_households,10000.0
-n_consumer_firms,24.0
-n_capital_firms,8.0
-n_firms,32.0
+n_households,1000.0
+n_consumer_firms,12.0
+n_capital_firms,4.0
+n_firms,16.0
 n_consumer_sectors,12.0
 household_n_res_wage_decrease,0.05
 household_targeted_savings_to_income_ratio,2.0
