@@ -414,7 +414,7 @@ void Allocate_Firms_to_Sectors(vector<Consumer_Firm_Agent*> *pConsumer_Firm_vect
         }
 
         // Randomly allocate firms to the sector
-        for (int i = 0; i < 1; ++i) {
+        for (int i = 0; i < firms_to_allocate; ++i) {
 
             // Due to the rounding of int firms_to_allocate, we will try to allocate more firms than we have
             if (start_index >= pConsumer_Firm_vector->size()) {

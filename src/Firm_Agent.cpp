@@ -120,10 +120,8 @@ void Firm_Agent::Initialize_Production(){
     // Initialize production and good inventory
     production_current = max(working_capital_inventory * output_per_machine,10LL); // give at least 10 goods to start
     production_planned = production_current;
-    inventory = production_current* inv_factor;
-    cout << "inventory is :" << inventory << "in sector " << this->Get_Sector_ID() << endl;
+    inventory = production_current * inv_factor;
     desired_inventory = production_current;
-    cout << "desired_inventory is :" << desired_inventory<< "in sector " << this->Get_Sector_ID() << endl;
     
     // Initialize sales and revenue ( Note: Sales will be subtracted from inventory later at t=1 )
     float init_sales = is_cons_firm ? firm_cons_init_quantity_sold_ratio : firm_cap_init_quantity_sold_ratio;
@@ -238,11 +236,7 @@ void Firm_Agent::Check_Sales(){
 
     desired_inventory = max( static_cast<long long>(1 * production_current),static_cast<long long>(1 * average_sale_quantity) );
     cout << "production_current : " << production_current<< endl;
-    cout << "planned production calculated :" << production_planned << endl;
-    cout << "average_sale_quantity:" << average_sale_quantity << endl;
-    cout << "inventory :" << inventory << endl;
-    cout << "desired_inventory :" << desired_inventory << endl;
-    cout << "quantity sold :" << quantity_sold << endl;
+    
     //desired_inventory = static_cast<long long>(target_inv_factor * production_current);
 }
 

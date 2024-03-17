@@ -225,11 +225,19 @@ void Consumer_Firm_Agent::Determine_New_Production(){
     good_price_current = max(good_price_current, unit_good_cost*1.1f);
 
     /* Alternative quantity adjustment formula  from jamel paper - overrides above quantity adjustments */
-    production_planned = static_cast<long long>(average_sale_quantity - (inventory - desired_inventory)/inv_reaction_factor);
+    production_planned = static_cast<long long>(average_sale_quantity - (inventory - desired_inventory/inv_reaction_factor));
     production_planned = max(production_planned, static_cast<long long>(1)); // Floor at 1
     // At least operate all machines ?
     
     pPublic_Info_Board->Update_Consumer_Goods_Production_Planned(sector_id, production_planned);
+
+    cout << "average_sale_quantity:" << average_sale_quantity << endl;
+    cout << "inventory :" << inventory << endl;
+    cout << "desired_inventory :" << desired_inventory << endl;
+    cout << "quantity sold :" << quantity_sold << endl;
+    cout << "employees :" << employee_count << endl;
+    cout << "planned production calculated :" << production_planned << endl;
+    cout << "\n" << endl;
 }
 
 
