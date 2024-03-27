@@ -231,13 +231,6 @@ void Consumer_Firm_Agent::Determine_New_Production(){
     
     pPublic_Info_Board->Update_Consumer_Goods_Production_Planned(sector_id, production_planned);
 
-    cout << "average_sale_quantity:" << average_sale_quantity << endl;
-    cout << "inventory :" << inventory << endl;
-    cout << "desired_inventory :" << desired_inventory << endl;
-    cout << "quantity sold :" << quantity_sold << endl;
-    cout << "employees :" << employee_count << endl;
-    cout << "planned production calculated :" << production_planned << endl;
-    cout << "\n" << endl;
 }
 
 

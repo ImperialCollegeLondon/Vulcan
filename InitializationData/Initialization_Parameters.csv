@@ -29,7 +29,7 @@ household_init_res_wage_min,0.0
 household_init_res_wage_max,999999.0
 household_init_unemployment_benefit,500.0
 household_init_minimum_wage,500.0
-firm_cons_init_cash_mean,10000.0
+firm_cons_init_cash_mean,100000.0
 firm_cons_init_cash_std,0.0
 firm_cons_init_cash_min,1.0
 firm_cons_init_cash_max,999999999.0
