@@ -432,7 +432,7 @@ float firm_cons_init_dividend_ratio_pessimist = 0.02;
 
 // --- Consumer Firm dynamic parameters
 float firm_cons_inv_depr_rate = 0.01;
-float firm_cons_productivity = 10; // # units produced per worker machine pairing
+float firm_cons_productivity = 1000; // # units produced per worker machine pairing
 int firm_cons_workers_per_machine = 1;
 float firm_cons_good_unit_cost = 1.0;
 float firm_cons_inv_reaction_factor = 1.0;

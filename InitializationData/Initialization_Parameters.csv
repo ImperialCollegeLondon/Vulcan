@@ -39,7 +39,7 @@ firm_cons_init_wage_offer_mean,200.0
 firm_cons_init_wage_offer_std,0.0
 firm_cons_init_wage_offer_min,100.0
 firm_cons_init_wage_offer_max,999999.0
-firm_cons_init_worker_demand_mean,4.0
+firm_cons_init_worker_demand_mean,41.0
 firm_cons_init_worker_demand_std,0.0
 firm_cons_init_worker_demand_min,1.0
 firm_cons_init_worker_demand_max,1000.0
@@ -68,7 +68,7 @@ firm_cap_init_wage_offer_mean,200.0
 firm_cap_init_wage_offer_std,0.0
 firm_cap_init_wage_offer_min,100.0
 firm_cap_init_wage_offer_max,999999.0
-firm_cap_init_worker_demand_mean,4.0
+firm_cap_init_worker_demand_mean,41.0
 firm_cap_init_worker_demand_std,0.0
 firm_cap_init_worker_demand_min,1.0
 firm_cap_init_worker_demand_max,1000.0
