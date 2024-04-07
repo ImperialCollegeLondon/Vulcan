@@ -232,8 +232,8 @@ void Firm_Agent::Check_Sales(){
     } else {
         inv_factor = target_inv_factor/10.0;
     }
-
-    desired_inventory = max( static_cast<long long>(target_inv_factor * production_current),static_cast<long long>(target_inv_factor * average_sale_quantity) );
+    cout << "inv factor" << inv_factor << endl;
+    desired_inventory = max( static_cast<long long>(target_inv_factor* production_current),static_cast<long long>(target_inv_factor * average_sale_quantity) );
     
     //desired_inventory = static_cast<long long>(target_inv_factor * production_current);
 }
@@ -510,9 +510,7 @@ void Firm_Agent::Produce_Goods(){
     
     labor_utilization = min(static_cast<float>(working_capital_inventory*workers_per_machine) / static_cast<float>(employee_count) , float(1.0));
     machine_utilization = min(static_cast<float>(employee_count/workers_per_machine)/ (float)working_capital_inventory , float(1.0));
-    cout << "Labor Utilization :" << labor_utilization << endl;
-    cout << "Machine Utilization :" << machine_utilization << endl;
-    cout << "Working Capital Inventory :" << working_capital_inventory<< ", " << workers_per_machine << ", " << employee_count << endl;
+
     
     // Check for erroneous values - debugging
     if ( labor_utilization < 0 || labor_utilization > 1){
@@ -529,8 +527,6 @@ void Firm_Agent::Produce_Goods(){
     long long production_possible = min(production_max * labor_utilization, production_max * machine_utilization); // max possible given constraint
     production_current = min(production_possible, production_planned);
     production_current = max(production_current, production_possible/10); // At least operate at 10% capacity - may change this
-
-    cout << "output per machine :" << output_per_machine << endl;
 
     if ( production_current < 0 ){
         cout << "ERROR: Produce_Goods(): Production current is negative : p_current = " << production_current << "at firm # " << this << endl;
