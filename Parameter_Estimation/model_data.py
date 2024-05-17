@@ -2,15 +2,15 @@ import numpy as np
 import pandas as pd
 
 
-def data_study():
-    path = '../DataLogs' 
+def data_study(m, s):
+    path = '/Users/ayman/Desktop/FYP_project/Vulcan/DataLogs' 
 
     # Read all the data
-    households = pd.read_csv(f"{path}/Households.csv").sort_index(axis=1)
-    cons_firms = pd.read_csv(f"{path}/Consumer_Firms.csv").sort_index(axis=1)
-    cap_firms = pd.read_csv(f"{path}/Capital_Firms.csv").sort_index(axis=1)
-    pboard = pd.read_csv(f"{path}/Public_Info_Board.csv").sort_index(axis=1)
-    bank = pd.read_csv(f"{path}/Bank.csv").sort_index(axis=1)
+    households = pd.read_csv(f"{path}/Households_{m}_{s}.csv").sort_index(axis=1)
+    cons_firms = pd.read_csv(f"{path}/Consumer_Firms_{m}_{s}.csv").sort_index(axis=1)
+    cap_firms = pd.read_csv(f"{path}/Capital_Firms_{m}_{s}.csv").sort_index(axis=1)
+    pboard = pd.read_csv(f"{path}/Public_Info_Board_{m}_{s}.csv").sort_index(axis=1)
+    bank = pd.read_csv(f"{path}/Bank_{m}_{s}.csv").sort_index(axis=1)
 
     mask = households['date'].apply(lambda x: np.isnan(x) if isinstance(x, float) else False)
 

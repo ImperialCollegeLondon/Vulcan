@@ -2,6 +2,7 @@
 #include <chrono>
 #include <fstream>
 #include <string>
+#include <sstream>
 
 #include "Initialization_Parameters.hpp"
 #include "Public_Info_Board.hpp"
@@ -44,9 +45,25 @@ int main()
     cout << "***************** Initialization Phase begun *********" << endl;
 
     // Read and assign all simulation parameters from the csv files
-    Read_Parameters(initialization_parameters, "../InitializationData/Initialization_Parameters.csv");
-    Read_Parameters(main_loop_parameters, "../InitializationData/Main_Loop_Parameters.csv");
-    Read_Parameters(randomness_parameters, "../InitializationData/Randomness_Parameters.csv");
+
+    int m=1;
+    int s=1;
+
+    std::ostringstream path;
+    path << "../InitializationData/Initialization_Parameters_" << m << "_" << s << ".csv";
+    std::string initialization_parameters_path = path.str(); 
+
+    std::ostringstream path;
+    path << "../InitializationData/Main_Loop_Parameters_" << m << "_" << s << ".csv";
+    std::string main_loop_parameters_path = path.str(); 
+
+    std::ostringstream path;
+    path << "../InitializationData/Randomness_Parameters_" << m << "_" << s << ".csv";
+    std::string randomness_path = path.str(); 
+
+    Read_Parameters(initialization_parameters, initialization_parameters_path.c_str());
+    Read_Parameters(main_loop_parameters, main_loop_parameters_path.c_str());
+    Read_Parameters(randomness_parameters, randomness_path.c_str());
     cout << "All parameters read successfully" << endl;
     Assign_All_Parameters(initialization_parameters, main_loop_parameters, randomness_parameters);
 
