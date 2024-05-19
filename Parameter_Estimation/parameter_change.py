@@ -147,6 +147,7 @@ firm_cap_rand_wage_change_max = firm_cap_rand_wage_change * lower
 
 
 def change_parameters():
+    
 
     wb = load_workbook('/Users/ayman/Desktop/FYP_project/Vulcan/InitializationData/Simulation_Parameters_main.xlsx')
 
@@ -154,8 +155,10 @@ def change_parameters():
     Main_Loop_Parameters_wb = wb['Main_Loop_Parameters']
     Randomness_Parameters_wb = wb['Randomness_Parameters']
 
+    a = Initialization_Parameters_wb.cell(row=29, column=2).value
     Initialization_Parameters_wb.cell(row=29, column=2).value = str(np.random.uniform(household_init_res_wage_min, household_init_res_wage_max,1)) # household_init_res_wage_mean
-    print(str(np.random.uniform(household_init_res_wage_min, household_init_res_wage_max,1)), np.random.uniform(household_init_res_wage_min, household_init_res_wage_max,1))
+    b = Initialization_Parameters_wb.cell(row=29, column=2).value
+    print("abab", a== b, a, b)
     Initialization_Parameters_wb.cell(row=33, column=2).value = str(np.random.uniform(household_init_unemployment_benefit, household_init_unemployment_benefit,1)) # household_init_unemployment_benefit
     Initialization_Parameters_wb.cell(row=34, column=2).value = str(np.random.uniform(household_init_minimum_wage_min, household_init_minimum_wage_max,1)) # household_init_minimum_wage
     Initialization_Parameters_wb.cell(row=54, column=2).value = str(np.random.uniform(firm_cons_init_inv_factor_min, firm_cons_init_inv_factor_max,1)) # firm_cons_init_inv_factor_mean
