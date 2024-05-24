@@ -3,25 +3,28 @@ import numpy as np
 import parameter_change
 import model_data
 import matplotlib.pyplot as plt
+import pandas as pd
+import Empirical_Data 
+from Likelihood_Estimation import Likelihood, max_likelihood_params
+from data_plotting import plot_data_3D, plot_data
 
+UK_Consumer_Inflation_Empirical = Empirical_Data.UK_Empirical_Data("Consumer_Inflation")
+UK_GDP_Growth_Empirical = Empirical_Data.UK_Empirical_Data("GDP_growth_nominal")
+UK_Unemployment_Rate_Empirical = Empirical_Data.UK_Empirical_Data("Unemployment_Rate")
 os.system("python3 /Users/ayman/Desktop/FYP_project/Vulcan/Parameter_Estimation/parameter_change.py")
 
 os.system('cd /Users/ayman/Desktop/FYP_project/Vulcan/src')   
 os.system("make")
 
-initialization_parameters = {}
-main_loop_parameters = {}
-randomness_parameters = {}
+S = 10
+M = 20
+t0 = 20
+T = 80
+Theta = np.zeros((M, 29))
 
-S = 3
-M = 5
-t0 = 50
-T = 150
-
-Y_unemployment_rate = np.zeros((S,T,M))
-Y_consumer_inflation = np.zeros((S,T,M))
-Y_GDP_growth_nominal  = np.zeros((S,T,M))
-Y_GDP_growth_real = np.zeros((S,T,M))
+Y_unemployment_rate = np.zeros((S,T-t0,M))
+Y_consumer_inflation = np.zeros((S,T-t0,M))
+Y_GDP_growth_nominal  = np.zeros((S,T-t0,M))
 
 for m in range(M):
     
@@ -30,35 +33,38 @@ for m in range(M):
         os.system('python3 /Users/ayman/Desktop/FYP_project/Vulcan/InitializationData/Initialization_Data_Prep.py')
         os.system('python3 /Users/ayman/Desktop/FYP_project/Vulcan/Parameter_Estimation/model_simulation.py')
         
-        unemployment_rate, consumer_inflation, GDP_growth_nominal, GDP_growth_real = model_data.data_study()
+        unemployment_rate, consumer_inflation, GDP_growth_nominal= model_data.data_study()
         
-        Y_unemployment_rate[s,:,m] = unemployment_rate.tail(T).values
-        Y_consumer_inflation[s,:,m] = consumer_inflation.tail(T).values
-        Y_GDP_growth_nominal[s,:,m] = GDP_growth_nominal.tail(T).values
-        Y_GDP_growth_real [s,:,m] = GDP_growth_real.tail(T).values
+        Y_unemployment_rate[s,:,m] = unemployment_rate.tail(T-t0).values
+        Y_consumer_inflation[s,:,m] = consumer_inflation.tail(T-t0).values
+        Y_GDP_growth_nominal[s,:,m] = GDP_growth_nominal.tail(T-t0).values
         
         print(m, s)
         
-    parameter_change.change_parameters()
+    params = parameter_change.change_parameters()
+    Theta[m,:] = params
     
-print(np.shape(Y_GDP_growth_real))
+    
+likelihood_params = Likelihood(Y_consumer_inflation, Y_unemployment_rate, Y_GDP_growth_nominal, UK_Consumer_Inflation_Empirical, UK_GDP_Growth_Empirical, UK_Unemployment_Rate_Empirical, Theta)
+Theta_max_likelihood = max_likelihood_params(likelihood_params)
+max_likelihood_params(likelihood_params)
 
-
-
-def plot_data(X, Y_data, title):
-    fig, ax = plt.subplots()
-    for m in range(M):
-        for s in range(S):
-            ax.plot(X, Y_data[s, :, m])
-            ax.set_title(title)
-            ax.set_xlabel('Time')
-            ax.set_ylabel('Value')
+os.system('python3 /Users/ayman/Desktop/FYP_project/Vulcan/InitializationData/Initialization_Data_Prep.py')
+os.system('python3 /Users/ayman/Desktop/FYP_project/Vulcan/Parameter_Estimation/model_simulation.py')
+unemployment_rate, consumer_inflation, GDP_growth_nominal= model_data.data_study()
         
-Time = np.arange(51, 201)
+Y_unemployment_rate_max_ll = unemployment_rate.tail(T-t0).values
+Y_consumer_inflation_max_ll = consumer_inflation.tail(T-t0).values
+Y_GDP_growth_nominal_max_ll = GDP_growth_nominal.tail(T-t0).values      
+        
+Time = np.arange(21, 81)
 
-plot_data(Time, Y_unemployment_rate, "Unemployment Rate Over Time")
-plot_data(Time, Y_consumer_inflation, "Consumer Inflation Over Time")
-plot_data(Time, Y_GDP_growth_nominal, "Nominal GDP Growth Over Time")
-plot_data(Time, Y_GDP_growth_real, "Real GDP Growth Over Time")
+plot_data(Time, Y_unemployment_rate_max_ll, UK_Unemployment_Rate_Empirical, "Unemployment Rate Over Time")
+plot_data(Time, Y_consumer_inflation_max_ll, UK_Consumer_Inflation_Empirical, "Consumer Inflation Over Time")
+plot_data(Time, Y_GDP_growth_nominal_max_ll, UK_GDP_Growth_Empirical, "Nominal GDP Growth Over Time")
+
+"""plot_data_3D(Time, Y_unemployment_rate_max_ll, "Unemployment Rate Over Time", M, S)
+plot_data_3D(Time, Y_consumer_inflation_max_ll, "Consumer Inflation Over Time", M, S)
+plot_data_3D(Time, Y_GDP_growth_nominal_max_ll, "Nominal GDP Growth Over Time", M, S)"""
 
 plt.show()

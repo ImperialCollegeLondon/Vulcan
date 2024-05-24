@@ -156,4 +156,4 @@ def data_study():
     GDP_growth_nominal = economy['GDP_growth_nominal']
     GDP_growth_real = economy['GDP_growth_real']
     
-    return unemployment_rate, consumer_inflation, GDP_growth_nominal, GDP_growth_real
+    return unemployment_rate, consumer_inflation, GDP_growth_nominal
