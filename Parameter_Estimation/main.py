@@ -16,8 +16,8 @@ os.system("python3 /Users/ayman/Desktop/FYP_project/Vulcan/Parameter_Estimation/
 os.system('cd /Users/ayman/Desktop/FYP_project/Vulcan/src')   
 os.system("make")
 
-S = 10
-M = 20
+S = 3
+M = 2
 t0 = 20
 T = 80
 Theta = np.zeros((M, 29))
@@ -59,8 +59,8 @@ Y_GDP_growth_nominal_max_ll = GDP_growth_nominal.tail(T-t0).values
         
 Time = np.arange(21, 81)
 
-plot_data(Time, Y_unemployment_rate_max_ll, UK_Unemployment_Rate_Empirical, "Unemployment Rate Over Time")
-plot_data(Time, Y_consumer_inflation_max_ll, UK_Consumer_Inflation_Empirical, "Consumer Inflation Over Time")
+plot_data(Time, Y_unemployment_rate_max_ll*100, UK_Unemployment_Rate_Empirical, "Unemployment Rate Over Time")
+plot_data(Time, Y_consumer_inflation_max_ll*100, UK_Consumer_Inflation_Empirical, "Consumer Inflation Over Time")
 plot_data(Time, Y_GDP_growth_nominal_max_ll, UK_GDP_Growth_Empirical, "Nominal GDP Growth Over Time")
 
 """plot_data_3D(Time, Y_unemployment_rate_max_ll, "Unemployment Rate Over Time", M, S)
