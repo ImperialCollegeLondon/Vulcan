@@ -194,7 +194,7 @@ firm_cap_rand_wage_change_max = firm_cap_rand_wage_change * lower
     
     
 def change_parameters():
-    
+
     # Load workbook and sheets
     wb = load_workbook('../InitializationData/Simulation_Parameters_main.xlsx')
     Initialization_Parameters_wb = wb['Initialization_Parameters']
