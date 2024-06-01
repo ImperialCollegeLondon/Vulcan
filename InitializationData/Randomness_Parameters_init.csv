@@ -5,11 +5,11 @@ household_rand_job_search,0.2
 Consumer Firms,0.0
 firm_cons_rand_dividend_change,0.1
 firm_cons_rand_sentiment_adoption,0.1
-firm_cons_rand_desired_inventory_factor_change,0.03
-firm_cons_rand_price_change_upper_limit,0.86
-firm_cons_rand_wage_change,0.71
+firm_cons_rand_desired_inventory_factor_change,0.1
+firm_cons_rand_price_change_upper_limit,0.1
+firm_cons_rand_wage_change,0.2
 firm_cons_rand_dividend_change,0.1
 firm_cap_rand_sentiment_adoption,0.1
-firm_cap_rand_desired_inventory_factor_change,0.5
+firm_cap_rand_desired_inventory_factor_change,0.1
 firm_cap_rand_price_change_upper_limit,0.1
-firm_cap_rand_wage_change,0.91
+firm_cap_rand_wage_change,0.2

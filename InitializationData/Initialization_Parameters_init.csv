@@ -1,5 +1,5 @@
 bank_init_interest_rate,0.02
-household_init_c_f_mean,0.38
+household_init_c_f_mean,0.5
 household_init_c_f_std,0.0
 household_init_c_f_min,0.1
 household_init_c_f_max,0.9
@@ -7,7 +7,7 @@ household_init_c_excess_mean,0.0
 household_init_c_excess_std,0.0
 household_init_c_excess_min,0.0
 household_init_c_excess_max,0.7
-household_init_s_optimist_mean,0.41
+household_init_s_optimist_mean,0.2
 household_init_s_optimist_std,0.0
 household_init_s_optimist_min,0.0
 household_init_s_optimist_max,0.5
@@ -15,11 +15,11 @@ household_init_s_pessimist_mean,0.3
 household_init_s_pessimist_std,0.0
 household_init_s_pessimist_min,0.1
 household_init_s_pessimist_max,0.6
-household_init_wealth_mean,218.24
+household_init_wealth_mean,1250.0
 household_init_wealth_std,0.0
 household_init_wealth_min,0.0
 household_init_wealth_max,2000.0
-household_init_unemp_tolerance_mean,73.48
+household_init_unemp_tolerance_mean,10.0
 household_init_unemp_tolerance_std,0.0
 household_init_unemp_tolerance_min,0.0
 household_init_unemp_tolerance_max,100.0
@@ -28,7 +28,7 @@ household_init_res_wage_std,0.0
 household_init_res_wage_min,0.0
 household_init_res_wage_max,500.0
 household_init_unemployment_benefit,500.0
-household_init_minimum_wage,808.24
+household_init_minimum_wage,500.0
 firm_cons_init_cash_mean,100000.0
 firm_cons_init_cash_std,0.0
 firm_cons_init_cash_min,1.0
@@ -39,7 +39,7 @@ firm_cons_init_wage_offer_mean,600.0
 firm_cons_init_wage_offer_std,500.0
 firm_cons_init_wage_offer_min,100.0
 firm_cons_init_wage_offer_max,999999.0
-firm_cons_init_worker_demand_mean,2.0
+firm_cons_init_worker_demand_mean,15.0
 firm_cons_init_worker_demand_std,0.0
 firm_cons_init_worker_demand_min,1.0
 firm_cons_init_worker_demand_max,1000.0
@@ -68,7 +68,7 @@ firm_cap_init_wage_offer_mean,600.0
 firm_cap_init_wage_offer_std,0.0
 firm_cap_init_wage_offer_min,100.0
 firm_cap_init_wage_offer_max,999999.0
-firm_cap_init_worker_demand_mean,2.0
+firm_cap_init_worker_demand_mean,15.0
 firm_cap_init_worker_demand_std,0.0
 firm_cap_init_worker_demand_min,1.0
 firm_cap_init_worker_demand_max,1000.0
